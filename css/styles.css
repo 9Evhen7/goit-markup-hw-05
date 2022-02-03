@@ -11,6 +11,7 @@
   --hero-gradient: rgba(47, 48, 58, 0.4);
   --footer-icons-bg: rgba(255, 255, 255, 0.1);
   --backdrop-color: rgba(0, 0, 0, 0.2);
+  --main-cubic: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
@@ -139,7 +140,9 @@ img {
   padding-top: 32px;
   padding-bottom: 32px;
 
+  transition-property: color;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .header-item-link:hover,
@@ -160,7 +163,9 @@ img {
   border-radius: 2px;
 
   transform: scale(0);
+  transition-property: transform;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .pasiv-link:hover:after,
@@ -300,10 +305,12 @@ img {
   bottom: 0;
   left: 0;
 
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  padding-top: 27px;
-  padding-bottom: 27px;
+  width: 100%;
+  height: 70px;
 
   background-color: rgba(47, 48, 58, 0.8);
 
@@ -399,7 +406,9 @@ img {
   border-radius: 50%;
   color: var(--team-link-color);
 
+  transition-property: color, background-color;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .team-icon {
@@ -438,7 +447,9 @@ img {
   border-radius: 4px;
   color: var(--team-link-color);
 
+  transition-property: color, border;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .clients-icon {
@@ -527,7 +538,9 @@ img {
   color: var(--main-bcg-color);
   background-color: var(--footer-icons-bg);
 
+  transition-property: background-color;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .footer-net-link:hover,
@@ -583,7 +596,9 @@ img {
   text-align: center;
   color: var(--title-text-color);
 
+  transition-property: box-shadow, border-radius, background-color, color;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .filter-btn:hover,
@@ -609,7 +624,9 @@ img {
 }
 
 .portfolio-net-link {
+  transition-property: box-shadow;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .portfolio-net-wraper {
@@ -636,12 +653,13 @@ img {
   color: var(--main-bcg-color);
 
   transform: translateY(100%);
+  transition-property: transform;
   transition-duration: 250ms;
+  transition-timing-function: var(--main-cubic);
 }
 
 .portfolio-net-link:hover,
 .portfolio-net-link:focus {
-  box-sizing: border-box;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
@@ -686,14 +704,17 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: var(--backdrop-color);
 
-  transition-duration: 250ms;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms var(--main-cubic),
+    visibility 250ms var(--main-cubic);
 }
 
-.is-hidden {
+.backdrop.is-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
@@ -710,15 +731,14 @@ img {
 
   width: 528px;
   height: 581px;
-  transform: translate(-50%, -50%) scale(1);
 
   background-color: var(--main-bcg-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
 
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms var(--main-cubic);
 }
 
 .modal-close-button {
